@@ -12,7 +12,7 @@ Yet another Hello World written in Spring and Vue
   - Hystrix (circuit breaker)
 - Spring Security  
 ### Test
-- JUnit, 
+- JUnit
 - Spring MVC Test
 - Mockito
 - WireMock
@@ -28,11 +28,15 @@ Yet another Hello World written in Spring and Vue
 ### Logs management
 - Elasticsearch
 - Logstash
-- Kibana/Grafana
-- Sleuth & Zipkin
+- Sleuth
 ### Building/Deployment 
 - Docker
+- TBD: DC/OS or Kubernetes or Openshift
 - Maven ✔
 - Git ✔
+### Monitoring
+- Zipkin
+- TBD: Kibana or Grafana
+- Spring Boot Admin
 ### CI/CD
-- Travis
+- Travis ✔
