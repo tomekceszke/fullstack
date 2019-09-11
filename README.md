@@ -22,13 +22,13 @@ The goal is to use as many `fancy` frameworks as possible :)
 - WireMock
 ### Data  
 - Hibernate
+- Flyway or ~~liquibase~~
 ### Messaging
 - Kafka
 - REST
 - Websocket
 ### Frontend
-- Vue
-- Vuetify
+- Vue or React
 ### Logs management
 - Elasticsearch
 - Logstash
@@ -37,10 +37,10 @@ The goal is to use as many `fancy` frameworks as possible :)
 - Docker
 - Maven ✔
 - Git ✔
-- TBD: DC/OS or Kubernetes or Openshift
+- Kubernetes or ~~DC/OS~~ or ~~Openshift~~
 ### Monitoring
 - Zipkin
-- TBD: Kibana or Grafana
+- TBD: Kibana or Grafana or Splank
 - Spring Boot Admin ✔
 ### CI/CD
 - Travis ✔ 
