@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: hello
+  namespace: hello
+  annotations:  
+    kubernetes.io/ingress.class: "nginx"    
+    # kubernetes.io/ingress.allow-http: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    # ingress.kubernetes.io/force-ssl-redirect: "false"
+    # nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    
+spec:
+  tls:
+  - hosts:
+    - hello.ceszke.com    
+    secretName: hello-tls
+  # backend:
+  #   serviceName: default-http-backend
+  #   servicePort: 80    
+  rules:
+    - host: hello.ceszke.com
+      http:
+        paths:
+        - path: /
+          backend:
+            serviceName: hello-web
+            servicePort: 80
+        - path: /api/hello-service
+          backend:
+            serviceName: hello-service
+            servicePort: 8080              
