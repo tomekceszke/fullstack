@@ -1,6 +1,6 @@
 spring:
   application:
-    name: helloworld-service
+    name: hello-service
   boot:
     admin:
       client:
