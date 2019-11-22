@@ -1,64 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.7.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.7.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
-	<groupId>com.ceszke</groupId>
-	<artifactId>fullstack</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+    <groupId>com.ceszke</groupId>
+    <artifactId>hello</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-	<name>fullstack</name>
-	<description>Demo project for Spring Boot</description>
+    <name>hello</name>
+    <description>Demo project for Spring Boot</description>
 
-	<properties>
-		<java.version>11</java.version>
-		<spring-cloud.version>Greenwich.SR2</spring-cloud.version>
-		<spring-boot-admin.version>2.1.6</spring-boot-admin.version>
-	</properties>
+    <properties>
+        <java.version>11</java.version>
+        <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
+        <spring-boot-admin.version>2.1.6</spring-boot-admin.version>
+        <dockerfile-maven-version>1.4.10</dockerfile-maven-version>
+    </properties>
 
-	<modules>
-		<!--<module>locator</module>-->
-		<!--<module>gateway</module>-->
-		<!--<module>commons</module>-->
-		<!--<module>config</module>-->
-		<module>helloworld-service</module>
-		<module>spring-boot-admin</module>
-	</modules>
+    <modules>
+        <!--<module>locator</module>-->
+        <!--<module>gateway</module>-->
+        <!--<module>commons</module>-->
+        <!--<module>config</module>-->
+        <module>hello-service</module>
+        <module>spring-boot-admin</module>
+    </modules>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>de.codecentric</groupId>
-				<artifactId>spring-boot-admin-dependencies</artifactId>
-				<version>${spring-boot-admin.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring-boot-admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
+                    <version>${dockerfile-maven-version}</version>
+                    <executions>
+                        <execution>
+                            <id>default</id>
+                            <goals>
+                                <goal>build</goal>
+                                <goal>push</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <repository>registry.ceszke.com/${project.artifactId}</repository>
+                        <tag>${project.version}</tag>
+                        <buildArgs>
+                            <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                        </buildArgs>
+                        <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>
