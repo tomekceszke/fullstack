@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/tomekceszke/fullstack.svg?branch=master)](https://travis-ci.org/tomekceszke/fullstack)
 
-# fullstack
+# hello
 Yet another Hello World written in Spring and Vue.
 
 The goal is to use as many `fancy` frameworks as possible :)
@@ -9,7 +9,7 @@ The goal is to use as many `fancy` frameworks as possible :)
 ### Backend
 - Spring Boot ✔
 - Spring Cloud:
-  - [Config Server](https://github.com/tomekceszke/fullstack-config)
+  - [Config Server](https://github.com/tomekceszke/hello-config)
   - Netflix Eureka (service locator)
   - Feign + Ribbon (REST client with load balancing)
   - Zuul (gateway)
@@ -33,18 +33,20 @@ The goal is to use as many `fancy` frameworks as possible :)
 - Elasticsearch
 - Logstash
 - Sleuth
-### Building/Deployment 
+### Building
 - Docker
 - Maven ✔
 - Git ✔
 - Kubernetes or ~~DC/OS~~ or ~~Openshift~~
 ### Monitoring
 - Zipkin
-- TBD: Kibana or Grafana or Splank
+- TBD: Kibana or Grafana or Splunk
 - Spring Boot Admin ✔
 ### CI/CD
-- Travis ✔ 
-
+- Travis ✔
+- GitHub action ✔ 
 ### Doc
 - AsciiDoctor, Spring Doc 
 - Swagger
+### Deployment
+- [DigitalOcean](https://m.do.co/c/af5198ce0d20) - Kubernetes Cluster
