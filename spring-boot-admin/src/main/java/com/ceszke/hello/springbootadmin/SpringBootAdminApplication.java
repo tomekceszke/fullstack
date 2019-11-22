@@ -1,4 +1,4 @@
-package com.ceszke.fullstack.springbootadmin;
+package com.ceszke.hello.springbootadmin;
 
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;

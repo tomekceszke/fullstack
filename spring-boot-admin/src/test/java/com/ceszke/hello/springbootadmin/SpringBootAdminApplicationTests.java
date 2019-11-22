@@ -1,4 +1,4 @@
-package com.ceszke.fullstack.springbootadmin;
+package com.ceszke.hello.springbootadmin;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
